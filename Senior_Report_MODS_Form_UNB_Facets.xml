@@ -115,6 +115,7 @@
               <description>&lt;p&gt;&lt;strong&gt;Rules:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;subtitles are a wholly optional field for senior reports&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;do not capitalize first word&lt;/li&gt;
 &lt;li&gt;capitalize proper nouns&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -183,6 +184,43 @@
             </create>
             <read>
               <path>mods:note[@type='statement of responsibility']</path>
+              <context>parent</context>
+            </read>
+            <update>
+              <path>self::node()</path>
+              <context>self</context>
+            </update>
+            <delete>NULL</delete>
+          </actions>
+        </properties>
+        <children/>
+      </element>
+      <element name="copyright_information">
+        <properties>
+          <type>textarea</type>
+          <access>TRUE</access>
+          <collapsed>FALSE</collapsed>
+          <collapsible>FALSE</collapsible>
+          <default_value> Not available for use outside of the University of New Brunswick</default_value>
+          <description>Copyright information related to the publication; could be related to who owns the copyright to the abstract, etc.</description>
+          <disabled>FALSE</disabled>
+          <executes_submit_callback>FALSE</executes_submit_callback>
+          <multiple>FALSE</multiple>
+          <required>FALSE</required>
+          <resizable>FALSE</resizable>
+          <title>Copyright Information</title>
+          <tree>TRUE</tree>
+          <actions>
+            <create>
+              <path>self::node()</path>
+              <context>parent</context>
+              <schema/>
+              <type>xml</type>
+              <prefix>NULL</prefix>
+              <value>&lt;accessCondition type='useAndReproduction'&gt;%value%&lt;/accessCondition&gt;</value>
+            </create>
+            <read>
+              <path>mods:accessCondition[@type='useAndReproduction']</path>
               <context>parent</context>
             </read>
             <update>
@@ -591,7 +629,7 @@
                   <description>&lt;p&gt;&lt;strong&gt;Rules:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;write department name verbatim as appears on document&lt;/li&gt;
+&lt;li&gt;write department name verbatim as appears on document &lt;em&gt;unless&lt;/em&gt; that department is an older departmental name... always use the current departmental name&lt;/li&gt;
 &lt;li&gt;no need for campus distinction&lt;/li&gt;
 &lt;li&gt;if it there is no department name, write faculty name&lt;/li&gt;
 &lt;/ul&gt;
